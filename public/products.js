@@ -1,4 +1,4 @@
-[
+export const products = [
     {
       "id": "PROD-1001",
       "name": "Heinz Tomato Ketchup 460ml",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { products } from "../public/products";
 
 export default function Home() {
   const [form, setForm] = useState({ name: "", email: "" });
@@ -13,10 +14,11 @@ export default function Home() {
     e.preventDefault();
     setStatus("Submitting...");
     try {
+      let values = {form, products}
       // Send POST request to n8n webhook
       await axios.post(
-        "https://georgetrs.app.n8n.cloud/webhook-test/f7138459-23b1-4469-80f1-7c399cf86f36",
-        form
+        "https://georgetrs.app.n8n.cloud/webhook-test/90b8cf6c-b28e-403f-a293-06ecde6548b4",
+        values
       );
       setStatus("Submitted successfully!");
     } catch (error) {
