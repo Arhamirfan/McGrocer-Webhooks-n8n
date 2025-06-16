@@ -7,7 +7,7 @@ export default function handler(req, res) {
 
       fs.readFile(filePath, (err, data) => {
         let submissions = [];
-        if (!err) {
+        if (!err && data.length > 0) {
           submissions = JSON.parse(data);
         }
 

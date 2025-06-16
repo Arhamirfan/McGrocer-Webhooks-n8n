@@ -3,7 +3,7 @@ import axios from "axios";
 import { products } from "../public/products";
 
 export default function Home() {
-  const [form, setForm] = useState({ name: "", email: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
@@ -17,7 +17,7 @@ export default function Home() {
       let values = {form, products}
       // Send POST request to n8n webhook
       await axios.post(
-        "https://georgetrs.app.n8n.cloud/webhook-test/90b8cf6c-b28e-403f-a293-06ecde6548b4",
+        "https://arhamdev.app.n8n.cloud/webhook-test/2ef5e7e8-e117-41cd-ab57-e94c1483f1c6",
         values
       );
       setStatus("Submitted successfully!");
@@ -52,6 +52,17 @@ export default function Home() {
               type="email"
               placeholder="Email"
               value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <label className="block text-gray-700 mb-1" htmlFor="password">Password</label>
+            <input
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              name="password"
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={form.password}
               onChange={handleChange}
               required
             />

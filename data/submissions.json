@@ -1,0 +1,17 @@
+[
+  {
+    "id": "PROD-1001",
+    "name": "Heinz Tomato Ketchup 460ml",
+    "quantity": "3",
+    "price": "2.33",
+    "url": "https://groceries.asda.com/product/tomato-ketchup/heinz-tomato-ketchup/47159256"
+  },
+  {
+    "id": "PROD-1001",
+    "name": "Heinz Tomato Ketchup 460ml",
+    "quantity": "3",
+    "price": "2.33",
+    "url": "https://groceries.asda.com/product/tomato-ketchup/heinz-tomato-ketchup/47159256",
+    "vendor_name": "Asda"
+  }
+]
