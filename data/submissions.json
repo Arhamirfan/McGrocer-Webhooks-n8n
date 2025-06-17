@@ -4,14 +4,23 @@
     "name": "Heinz Tomato Ketchup 460ml",
     "quantity": "3",
     "price": "2.33",
-    "url": "https://groceries.asda.com/product/tomato-ketchup/heinz-tomato-ketchup/47159256"
-  },
-  {
-    "id": "PROD-1001",
-    "name": "Heinz Tomato Ketchup 460ml",
-    "quantity": "3",
-    "price": "2.33",
     "url": "https://groceries.asda.com/product/tomato-ketchup/heinz-tomato-ketchup/47159256",
     "vendor_name": "Asda"
+  },
+  {
+    "id": "PROD-1002",
+    "name": "Whole Milk 2L",
+    "quantity": "2",
+    "price": "2.9",
+    "url": "https://www.sainsburys.co.uk/gol-ui/product/arla-big-milk-2l",
+    "vendor_name": "Sainsbury's"
+  },
+  {
+    "id": "PROD-1003",
+    "name": "Coca-Cola Zero Sugar 12x330ml",
+    "quantity": "1",
+    "price": "5.99",
+    "url": "https://www.amazon.co.uk/dp/B078G6ZTKS",
+    "vendor_name": "Amazon UK"
   }
 ]
