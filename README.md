@@ -45,3 +45,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+## To setup dependencies and add it to requirement.txt follow these steps:
+
+Initialize Project and Virtual Environment
+```bash
+cd automation
+uv venv
+```
+Install Dependencies
+```bash
+uv pip install boto3
+uv pip freeze > requirements.txt
+```
+Create .gitignore
+```bash
+echo "/automation/.venv/" >> .gitignore
+echo "/fetch_sqs_msg/.venv/" >> .gitignore
+echo "/fetch_sqs_msg/output/" >> .gitignore
+```
+Create Output Directory
+```bash
+mkdir output
+```
