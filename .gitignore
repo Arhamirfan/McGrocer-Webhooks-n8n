@@ -39,6 +39,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/fetch_sqs_msg/output
-/fetch_sqs_msg/.venv 
-/automation/.venv/
+/output
