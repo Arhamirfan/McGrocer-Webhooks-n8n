@@ -34,6 +34,7 @@ export default async function handler(req, res) {
       try {
         const data = JSON.parse(Body);
         data.MessageId = msg.MessageId;
+        data.ReceiptHandle = msg.ReceiptHandle;
         savedFiles.push(data);
         // await sqs.deleteMessage({ QueueUrl: QUEUE_URL, ReceiptHandle }).promise();
       } catch (err) {
