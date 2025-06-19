@@ -20,6 +20,57 @@ function sleep(ms) {
   return new Promise(res => setTimeout(res, ms));
 }
 
+// Helper: Try to auto-accept cookie banners if present
+async function autoAcceptCookies(page) {
+  // Try common selectors and button texts
+  const selectors = [
+    'button[aria-label*="accept"]',
+    'button[aria-label*="cookie"]',
+    'button[title*="Accept"]',
+    'button:has-text("Accept")',
+    'button:has-text("I agree")',
+    'button:has-text("Got it")',
+    'button:has-text("Allow all")',
+    'button:has-text("Accept all")',
+    'button:has-text("OK")',
+    '[id*="accept"]',
+    '[id*="cookie"]',
+    '[class*="accept"]',
+    '[class*="cookie"]'
+  ];
+
+  for (const selector of selectors) {
+    try {
+      const el = await page.$(selector);
+      if (el) {
+        await el.click();
+        console.log(`Clicked cookie banner with selector: ${selector}`);
+        return true;
+      }
+    } catch (e) {
+      // Ignore errors and try next selector
+    }
+  }
+
+  // Try by visible text (Playwright 1.17+ supports :has-text)
+  const texts = [
+    'Accept', 'I agree', 'Got it', 'Allow all', 'Accept all', 'OK'
+  ];
+  for (const text of texts) {
+    try {
+      const el = await page.$(`button:has-text(\"${text}\")`);
+      if (el) {
+        await el.click();
+        console.log(`Clicked cookie banner with text: ${text}`);
+        return true;
+      }
+    } catch (e) {}
+  }
+
+  console.log('No cookie banner found or auto-accept failed.');
+  return false;
+}
+
 // Fetch a single message from the fetch-sqs API
 async function fetchNextProduct() {
   try {
@@ -45,6 +96,7 @@ async function automateProduct(product) {
     await page.setViewportSize({ width: 1280 + Math.floor(Math.random()*100), height: 800 + Math.floor(Math.random()*100) });
     await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
     await sleep(2000 + Math.random()*2000);
+    await autoAcceptCookies(page);
 
     // Site-specific logic
     switch ((vendor_name || '').toLowerCase()) {
