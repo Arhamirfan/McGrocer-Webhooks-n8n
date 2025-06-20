@@ -66,7 +66,7 @@ async function autoAcceptCookies(page) {
   return false;
 }
 
-async function fetchNextProduct() {
+async function getProducts() {
   try {
     const res = await axios.get('http://localhost:3000/api/fetch-sqs-messages'); // Update with your actual API endpoint
     if (res.data && res.data.messages && res.data.messages.length > 0) {
@@ -131,7 +131,7 @@ async function automateAmazon(page, product) {
 
 (async () => {
   let products;
-  while ((products = await fetchNextProducts()).length > 0) {
+  while ((products = await getProducts()).length > 0) {
     for (const product of products) {
       console.log('product', product);
       await automateProduct(product);
